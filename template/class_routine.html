@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method="post">
+  {% csrf_token %}
+  {{form.as_p}}
+  <input type="submit" value="submit">
+</form>
+
+  <h2>Class {{routine.0.which_class}} Routine</h2>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Day</th>
+        <th scope="col">10:00-10:55</th>
+        <th scope="col">11:00-11:55</th>
+        <th scope="col">12:00-12:55</th>
+        <th scope="col">02:00-02:55</th>
+        <th scope="col">03:00-03:55</th>
+        <th scope="col">04:00-04:55</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for r in routine %}
+      <tr>
+        <th scope="row">{{r.day}}</th>
+        <td>{{r.first_class}}<br/><small>Teacher: {{r.first_class.subject_teacher}}</small></td>
+        <td>{{r.second_class}}<br/><small>Teacher: {{r.second_class.subject_teacher}}</small></td>
+        <td>{{r.third_class}}<br/><small>Teacher: {{r.third_class.subject_teacher}}</small></td>
+        <td>{{r.fourth_class}}<br/><small>Teacher: {{r.fourth_class.subject_teacher}}</small></td>
+        <td>{{r.fifth_class}}<br/><small>Teacher: {{r.fifth_class.subject_teacher}}</small></td>
+        <td>{{r.sixth_class}}<br/><small>Teacher: {{r.sixth_class.subject_teacher}}</small></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

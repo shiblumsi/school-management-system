@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block content %}
+    <form method="post">
+        {% csrf_token %}
+        {{form.as_p}}
+        <input type="submit" value="submit" >
+    </form>
+    {% if student %}
+    <h2>{{student.name}}`s Subjects</h2>
+    {% endif %}
+    {% for s in subjects %}
+        <p>{{s.subject_name}}</p>
+    {% endfor %}
+{% endblock %}
