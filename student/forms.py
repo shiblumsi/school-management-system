@@ -1,5 +1,5 @@
 from django import forms
-from .models import ClassRoom,Subject,RoutineTimeSlot
+from .models import ClassRoom, Student,Subject,RoutineTimeSlot
 
 class GetStudentsForm(forms.Form):
     class_code = forms.CharField(max_length=255)
@@ -43,7 +43,6 @@ class CreateRoutineForm(forms.Form):
 
     
     
-    
-    
-    
-    
+class AttendanceForm(forms.Form):
+    student = forms.ModelChoiceField(queryset=Student.objects.all())
+    status = forms.BooleanField(required=False)

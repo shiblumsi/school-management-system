@@ -8,6 +8,9 @@ from student.models import Student,ClassRoom
 User = get_user_model()
 # Create your views here.
 
+def index(request):
+    return render(request,'index.html')
+
 def teacher_create(request):
     form = TeacherCreationForm()
     if request.method == "POST":

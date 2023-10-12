@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Student, ClassRoom, Subject, ExamType, Result, ClassRoutine, RoutineTimeSlot
+from .models import Student, ClassRoom, Subject, ExamType, Result, ClassRoutine, RoutineTimeSlot,Attendance
 # Register your models here.
 
 @admin.register(Student)
@@ -29,3 +29,7 @@ class RoutineModeladmin(admin.ModelAdmin):
 @admin.register(RoutineTimeSlot)
 class RoutineTimeModeladmin(admin.ModelAdmin):
     list_display = ['id','class_time']
+
+@admin.register(Attendance)
+class AttendanceModeladmin(admin.ModelAdmin):
+    list_display = ['id','student','status']

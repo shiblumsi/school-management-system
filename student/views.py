@@ -1,6 +1,6 @@
 from django.shortcuts import render,get_object_or_404,HttpResponse 
-from .models import Student, ClassRoom, Subject , Result, ClassRoutine, RoutineTimeSlot
-from .forms import GetStudentsForm, GetSubjectsForm, GetResultForm, CreateRoutineForm, WhichClassRoutineForm
+from .models import Student, ClassRoom, Subject , Result, ClassRoutine, RoutineTimeSlot,Attendance
+from .forms import GetStudentsForm, GetSubjectsForm, GetResultForm, CreateRoutineForm, WhichClassRoutineForm,AttendanceForm
 # Create your views here.
 def student_detail(request):
     pass
@@ -97,4 +97,19 @@ def class_routine(request):
         }
         return render(request,'class_routine.html',context)
     return render(request,'class_routine.html',{'form':form})
-        
+
+
+def students_attendance(request,id):
+    class_obj = ClassRoom.objects.get(id=id)
+    students = Student.objects.filter(which_class=class_obj)
+    if request.method == "POST":
+        for student in students:
+            status = request.POST.get(f'student_{student.id}')
+            date = request.POST.get('date')
+            Attendance.objects.create(student=student,status=status,date=date)
+    return render(request,'attendance.html',{'students':students,'class':class_obj})
+
+def view_attendance(request, class_id):
+    class_obj = ClassRoom.objects.get(id=class_id)
+    attendances = Attendance.objects.filter(student__which_class=class_obj)
+    return render(request, 'view_attendance.html', {'class': class_obj, 'attendances': attendances})
