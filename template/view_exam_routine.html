@@ -1,0 +1,37 @@
+
+{% extends 'base.html' %}
+
+{% block content %}
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Class 1</th>
+        <th scope="col">Class 2</th>
+        <th scope="col">Class 3</th>
+        <th scope="col">Class 4</th>
+        <th scope="col">Class 5</th>
+        <th scope="col">Class 6</th>
+        <th scope="col">Class 7</th>
+        <th scope="col">Class 8</th>
+        <th scope="col">Class 9</th>
+        <th scope="col">Class 10</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for r in routines %}
+      <tr>
+        <th scope="row">{{r.date}}</th>
+        <td>{{r.exam1}}</td>
+        <td>{{r.exam2}}</td>
+        <td>{{r.exam3}}</td>
+        <td>{{r.exam4}}</td>
+        <td>{{r.exam5}}</td>
+        <td>{{r.exam6}}</td>
+        <td>{{r.exam7}}</td>
+        <td>{{r.exam8}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

@@ -3,7 +3,7 @@ from django.core.exceptions import ValidationError
 from django.db.models import Q
 
 from .forms import CreateClassRoutineForm, WhichClassRoutineForm
-from .models import ClassRoutine2
+from .models import ClassRoutine2,ExamRoutine
 
 
 def create_class_routine(request):
@@ -42,3 +42,7 @@ def view_class_routine(request,class_id):
         'days':days,
         }
     return render(request,'student_view_routine.html',context)
+
+def view_exam_routine(request):
+    routines = ExamRoutine.objects.all()         #need customize
+    return render(request,'view_exam_routine.html',{'routines':routines})
