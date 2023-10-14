@@ -1,6 +1,8 @@
+from datetime import datetime
 from django.shortcuts import render,get_object_or_404,HttpResponse 
 from .models import Student,Attendance,Class
 from .forms import GetStudentsForm, GetSubjectsForm
+from academic.models import ClassRoutine2
 
 
 # Create your views here.
@@ -39,8 +41,6 @@ def get_subjects_by_student(request):
     return render(request,'get_subjects_by_student.html',{'form':form})
 
 
-
-
 def students_attendance(request,id):
     class_obj = Class.objects.get(id=id)
     students = Student.objects.filter(which_class=class_obj)
@@ -51,7 +51,32 @@ def students_attendance(request,id):
             Attendance.objects.create(student=student,status=status,date=date)
     return render(request,'attendance.html',{'students':students,'class':class_obj})
 
+
 def view_attendance(request, class_id):
     class_obj = Class.objects.get(id=class_id)
     attendances = Attendance.objects.filter(student__which_class=class_obj)
     return render(request, 'view_attendance.html', {'class': class_obj, 'attendances': attendances})
+
+
+def student_view_routine(request,class_id):
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    routine = ClassRoutine2.objects.filter(which_class=class_id)
+    context = {
+        'routine':routine,
+        'days':days,
+        }
+    return render(request,'student_view_routine.html',context)
+
+
+def student_routine_today(request,class_id):
+    today = datetime.now()
+    day_of_week = today.weekday()
+    days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    today_name = days[day_of_week]
+    routine = ClassRoutine2.objects.filter(which_class=class_id).filter(day=today_name)   #authentication will apply
+    context = {
+        'routine':routine,
+        'today':today_name,
+        'days':days,
+        }
+    return render(request,'student_routine_today.html',context)

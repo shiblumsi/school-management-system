@@ -17,10 +17,9 @@ def teacher_create(request):
         form = TeacherCreationForm(request.POST)
         if form.is_valid():
             name = form.cleaned_data['name']
-            username = name
             email = form.cleaned_data['email']
             department_name = form.cleaned_data['department']
-            user = User.objects.create_teacher(username=username,password='1',email=email)
+            user = User.objects.create_teacher(username=name,password='1',email=email)
             department = Department.objects.get(name=department_name)
             Teacher.objects.create(user=user,name=name,department=department)
     return render(request,'teacher_create.html',{'form':form})
@@ -31,13 +30,11 @@ def student_create(request):
     if request.method == "POST":
         form = StudentCreationForm(request.POST)
         if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
             name = form.cleaned_data['name']
             email = form.cleaned_data['email']
             class_code = form.cleaned_data['class_code']
             which_class = Class.objects.get(class_code=class_code)
-            user = User.objects.create_student(username=username,password=password,email=email)
+            user = User.objects.create_student(username=name,password='1',email=email)
             Student.objects.create(user=user,name=name,which_class=which_class)
             
     return render(request,'student_create.html',{'form':form})

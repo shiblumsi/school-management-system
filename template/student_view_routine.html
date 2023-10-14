@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for d in days %}
+    <h3>{{d}}</h3>
+    {% for r in routine %}
+    {% if r.day == d %}
+    {{r.time_slot}}----{{r.subject}}----{{r.subject.subject_teacher}}<br/>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}
+</body>
+</html>
