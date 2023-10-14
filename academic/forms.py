@@ -21,11 +21,9 @@ class CreateClassRoutineForm(forms.Form):
         ('Tuesday','Tuesday'),
         ('Wednesday','Wednesday'),
         ('Thursday','Thursday'),
-        ('Friday','Friday'),
     )
     for_class = forms.ModelChoiceField(queryset=Class.objects.all())
     time_slot = forms.ModelChoiceField(queryset=ClassRoutineTimeSlot.objects.all())
     subject = forms.ModelChoiceField(queryset=Subject.objects.all())
-    teacher = forms.ModelChoiceField(queryset=Teacher.objects.all())
     day = forms.ChoiceField(choices=DAY)
   

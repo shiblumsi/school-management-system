@@ -23,13 +23,10 @@
     <tbody>
         {% for r in routine %}
       <tr>
-        <th scope="row">{{r.day}}</th>
-        <td>{{r.first_class}}<br/><small>Teacher: {{r.first_class.subject_teacher}}</small></td>
-        <td>{{r.second_class}}<br/><small>Teacher: {{r.second_class.subject_teacher}}</small></td>
-        <td>{{r.third_class}}<br/><small>Teacher: {{r.third_class.subject_teacher}}</small></td>
-        <td>{{r.fourth_class}}<br/><small>Teacher: {{r.fourth_class.subject_teacher}}</small></td>
-        <td>{{r.fifth_class}}<br/><small>Teacher: {{r.fifth_class.subject_teacher}}</small></td>
-        <td>{{r.sixth_class}}<br/><small>Teacher: {{r.sixth_class.subject_teacher}}</small></td>
+        <th scope="row">{{r.time_slot}}</th>
+        <td>{{r.subject}}</td>
+       
+       
       </tr>
       {% endfor %}
     </tbody>
