@@ -1,8 +1,9 @@
 from django.db import models
+from sms_backend.utils import PreModel
 from teacher.models import Teacher
 
 # Create your models here.
-class Class(models.Model):
+class Class(PreModel):
     class_name = models.CharField(max_length=255)
     class_code = models.CharField(max_length=255)
 
@@ -10,26 +11,24 @@ class Class(models.Model):
         return self.class_name
 
 
-class Subject(models.Model):
+class Subject(PreModel):
     which_class = models.ForeignKey(Class,on_delete=models.CASCADE,related_name='which_class')
     subject_name = models.CharField(max_length=255)
-    # subject_code = models.CharField(max_length=255)
     subject_teacher = models.ForeignKey(Teacher,on_delete=models.SET_NULL,null=True,blank=True)
-    # time_slot = models.ForeignKey(RoutineTimeSlot,on_delete=models.SET_NULL,null=True,blank=True,related_name='time_slot')
 
     def __str__(self) -> str:
         return f'{self.subject_name}'
 
 
 
-class ClassRoutineTimeSlot(models.Model):
+class ClassRoutineTimeSlot(PreModel):
     routine_time_slot = models.CharField(max_length=255)
 
     def __str__(self) -> str:
         return self.routine_time_slot
 
 
-class ClassRoutine2(models.Model):
+class ClassRoutine2(PreModel):
     DAY = (
         ('Sunday','Sunday'),
         ('Monday','Monday'),
@@ -50,17 +49,38 @@ class ClassRoutine2(models.Model):
         return self.subject.subject_name
 
 
-class ExamType(models.Model):
+class TutionFeeByClass(PreModel):
+    which_class = models.OneToOneField(Class,on_delete=models.CASCADE)
+    tution_fee = models.PositiveIntegerField()
+
+
+class TutionFee(PreModel):
+    student = models.ForeignKey('student.Student',on_delete=models.CASCADE)
+    amount = models.PositiveIntegerField()
+    
+
+    def status(self):
+        tfbc = TutionFeeByClass.objects.get(which_class=self.student.which_class)
+        if tfbc.tution_fee == self.amount:
+            return 'paid'
+        elif tfbc.tution_fee > self.amount:
+            return f'{tfbc.tution_fee - self.amount} due'
+        else:
+            return f'{self.amount - tfbc.tution_fee} advance'
+
+
+
+class ExamType(PreModel):
     exam_type = models.CharField(max_length=255)
 
 
-class ExamTimeSlot(models.Model):
+class ExamTimeSlot(PreModel):
     time_slot = models.CharField(max_length=255)
 
 
-class ExamRoutine(models.Model):
+class ExamRoutine(PreModel):
     date = models.DateField()
-    time_slot = models.ForeignKey(ExamTimeSlot,on_delete=models.CASCADE)
+    #time_slot = models.ForeignKey(ExamTimeSlot,on_delete=models.CASCADE)
     exam_type = models.ForeignKey(ExamType,on_delete=models.CASCADE)
     exam1 = models.ForeignKey(Subject,on_delete=models.SET_NULL,null=True,blank=True,related_name='exam1')
     exam2 = models.ForeignKey(Subject,on_delete=models.SET_NULL,null=True,blank=True,related_name='exam2')
@@ -72,3 +92,14 @@ class ExamRoutine(models.Model):
     exam8 = models.ForeignKey(Subject,on_delete=models.SET_NULL,null=True,blank=True,related_name='exam8')
     exam9 = models.ForeignKey(Subject,on_delete=models.SET_NULL,null=True,blank=True,related_name='exam9')
     exam10 = models.ForeignKey(Subject,on_delete=models.SET_NULL,null=True,blank=True,related_name='exam10')
+    
+    
+
+class Result(PreModel):
+    student = models.ForeignKey('student.Student',on_delete=models.CASCADE)
+    subject = models.ForeignKey(Subject,on_delete=models.CASCADE)
+    year = models.CharField(max_length=255)
+    term = models.ForeignKey(ExamType,on_delete=models.CASCADE)
+    mark = models.PositiveIntegerField()
+
+

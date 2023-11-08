@@ -43,6 +43,8 @@ def view_class_routine(request,class_id):
         }
     return render(request,'student_view_routine.html',context)
 
+
+ # have to modify
 def view_exam_routine(request):
-    routines = ExamRoutine.objects.all()         #need customize
+    routines = ExamRoutine.objects.all()        
     return render(request,'view_exam_routine.html',{'routines':routines})

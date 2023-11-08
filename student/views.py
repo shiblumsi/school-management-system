@@ -1,6 +1,6 @@
 from datetime import datetime
 from django.shortcuts import render,get_object_or_404,HttpResponse 
-from .models import Student,Attendance,Class
+from .models import Mark, Student,Attendance,Class
 from .forms import GetStudentsForm, GetSubjectsForm
 from academic.models import ClassRoutine2
 
@@ -80,3 +80,13 @@ def student_routine_today(request,class_id):
         'days':days,
         }
     return render(request,'student_routine_today.html',context)
+
+
+def view_result(request,student_id):
+    student = Student.objects.get(id=student_id)
+    results = Mark.objects.filter(student__id=student_id)
+    context = {
+        'results':results,
+        'student':student
+    }
+    return render(request,'get_result.html',context)

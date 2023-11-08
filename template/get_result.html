@@ -1,62 +1,23 @@
 {% extends 'base.html' %}
-
 {% block content %}
-<form method="post">
-    {% csrf_token %}
-    {{form.as_p}}
-    <input type="submit" value="submit" >
-</form>
-{% if student %}
-<p>Name:{{student.name}}</p>
-<p>Class:one</p>
-<p>Term:{{exam_type}}</p>
-<p>Year:{{year}}</p>
-<h3>Half_Yearly</h3>
+<h3>{{ student.name }}</h3>
 <table class="table">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Subject</th>
         <th scope="col">Mark</th>
-        <th scope="col">Grade</th>
       </tr>
     </thead>
     <tbody>
-        {% for r in result %}
+        {% for r in results %}
       <tr>
         <th scope="row">1</th>
         <td>{{r.subject}}</td>
         <td>{{r.mark}}</td>
-        <td>{{r.get_grade}}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
-  {% endif %}
-  <h3>Final</h3>
-  {% if final %}
   
-  <table class="table">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Subject</th>
-        <th scope="col">Mark</th>
-        <th scope="col">Grade</th>
-      </tr>
-    </thead>
-    <tbody>
-        {% for r in result %}
-      <tr>
-        <th scope="row">1</th>
-        <td>{{r.subject}}</td>
-        <td>{{r.mark}}</td>
-        <td>{{r.get_grade}}</td>
-      </tr>
-      {% endfor %}
-    </tbody>
-  </table>
-  {% else %}
-  <p>Final result not publist</p>
-  {% endif %}
 {% endblock %}

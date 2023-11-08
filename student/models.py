@@ -1,6 +1,6 @@
 from django.db import models
 from account.models import CustomUser
-from academic.models import Class
+from academic.models import Class, ExamType, Subject
 
 
 
@@ -28,4 +28,8 @@ class Attendance(models.Model):
         return f'{self.student.name}'
 
 
-
+class Mark(models.Model):
+    term = models.ForeignKey(ExamType,on_delete=models.CASCADE)
+    student = models.ForeignKey(Student,on_delete=models.CASCADE)
+    subject =models.ForeignKey(Subject,on_delete=models.CASCADE)
+    mark = models.PositiveSmallIntegerField()

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ul>
+        {% for subject in subjects%}
+            <a href="{% url 'give-mark' subject.id %}"><li>{{subject.subject_name}} <strong>Class</strong> <small>{{subject.which_class}}</small></li></a><br>
+        {% endfor %}
+    </ul>
+</body>
+</html>
