@@ -1,5 +1,6 @@
-from django.shortcuts import render
-
+from django.shortcuts import render,redirect
+from django.contrib.auth import authenticate, login
+from django.contrib import messages
 from academic.models import ExamType, Subject
 from student.models import Mark, Student
 from .forms import DepartmentCreateForm
@@ -16,6 +17,25 @@ def create_department(request):
             Department.objects.create(name=name)
             
     return render(request,'department.html',{'form':form})
+
+def teacher_login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        user = authenticate(request,username=username,password=password)
+        if user is not None:
+            login(request,user)
+            messages.success(request, 'Login successful.')
+            return redirect('teacher-deshboard')
+        else:
+            messages.error(request, 'Login failed. Please check your username and password.')
+            
+    return render(request,'teacher_login.html')
+
+
+def teacher_deshboard(request):
+    return render(request,'teacher_deshboard.html')
 
 
 def teacher_gives_mark(request):
