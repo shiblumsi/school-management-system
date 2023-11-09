@@ -15,14 +15,13 @@ def create_department(request):
         if form.is_valid():
             name = form.cleaned_data['name']
             Department.objects.create(name=name)
-            
     return render(request,'department.html',{'form':form})
+
 
 def teacher_login(request):
     if request.method == "POST":
         username = request.POST.get('username')
         password = request.POST.get('password')
-
         user = authenticate(request,username=username,password=password)
         if user is not None:
             login(request,user)
@@ -30,7 +29,6 @@ def teacher_login(request):
             return redirect('teacher-deshboard')
         else:
             messages.error(request, 'Login failed. Please check your username and password.')
-            
     return render(request,'teacher_login.html')
 
 
