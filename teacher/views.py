@@ -56,3 +56,4 @@ def give_mark(request,subject_id):
             Mark.objects.create(term=ExamType.objects.get(exam_type='Half_Yearly'),subject=subject,mark=mark,student=student)
     return render(request,'give_mark.html',{'students':students})
 
+
