@@ -1,7 +1,7 @@
 from datetime import datetime
-from django.shortcuts import render,get_object_or_404,HttpResponse 
+from django.shortcuts import redirect, render,get_object_or_404,HttpResponse 
 from .models import Mark, Student,Attendance,Class
-from .forms import GetStudentsForm, GetSubjectsForm
+from .forms import EditAttendanceForm, GetStudentsForm, GetSubjectsForm
 from academic.models import ClassRoutine2
 
 
@@ -41,8 +41,8 @@ def get_subjects_by_student(request):
     return render(request,'get_subjects_by_student.html',{'form':form})
 
 
-def students_attendance(request,id):
-    class_obj = Class.objects.get(id=id)
+def students_attendance(request,class_id):
+    class_obj = Class.objects.get(id=class_id)
     students = Student.objects.filter(which_class=class_obj)
     if request.method == "POST":
         for student in students:
@@ -54,8 +54,32 @@ def students_attendance(request,id):
 
 def view_attendance(request, class_id):
     class_obj = Class.objects.get(id=class_id)
-    attendances = Attendance.objects.filter(student__which_class=class_obj)
-    return render(request, 'view_attendance.html', {'class': class_obj, 'attendances': attendances})
+    if request.method == "POST":
+        student_id = request.POST.get('student_id')
+        date = request.POST.get('date')
+        date2 = request.POST.get('date2')
+        if date:
+            attendances = Attendance.objects.filter(date=date,student__id=student_id)
+            return render(request, 'view_attendance.html', {'class': class_obj,'attendances': attendances})
+        else:
+            attendances = Attendance.objects.filter(student__which_class=class_obj,date=date2)
+            return render(request, 'view_attendance.html', {'class': class_obj, 'attendances': attendances})
+    return render(request, 'view_attendance.html')
+
+
+
+def edit_attendance(request, attendance_id):
+    attendance = get_object_or_404(Attendance, id=attendance_id)
+
+    if request.method == 'POST':
+        form = EditAttendanceForm(request.POST, instance=attendance)
+        if form.is_valid():
+            form.save()
+            return redirect('teacher-deshboard')
+    else:
+        form = EditAttendanceForm(instance=attendance)
+
+    return render(request, 'edit_attendance.html', {'form': form,'student_name':attendance.student.name})
 
 
 def student_view_routine(request,class_id):

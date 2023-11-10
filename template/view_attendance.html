@@ -6,6 +6,19 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>Attendance For Individual Stuednt</h2><small>search here</small>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="text" placeholder="student_id" name="student_id">
+        <input type="date" placeholder="date" name="date">
+        <input type="submit" value="submit">
+    </form>
+    <h2>All Students Attendance</h2>
+    <form action="" method="post">
+        {% csrf_token %}
+        <input type="date" name="date2" placeholder="date">
+        <input type="submit" value="submit">
+    </form>
     <table>
         <thead>
             <tr>
@@ -19,6 +32,7 @@
                 <td>{{attendance.student.name}}</td>
                 <td>{{attendance.status}}</td>
                 <td>{{attendance.date}}</td>
+                <td><a href="{% url 'edit_attendance' attendance.id %}">Edit</a></td>
             </tr>
             {% endfor %}
         </tbody>

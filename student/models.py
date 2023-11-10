@@ -20,9 +20,13 @@ class Attendance(models.Model):
         ('Absent','Absent'),
         ('Leave','Leave'),
     )
+    #subject = models.ForeignKey(Subject,on_delete=models.SET_NULL,null=True,blank=True)
     date = models.DateField()
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
     status = models.CharField(max_length=255,choices=ATTENDANCE_STATUS)
+
+    # class Meta:
+    #     unique_togather = ['student','date']
 
     def __str__(self) -> str:
         return f'{self.student.name}'

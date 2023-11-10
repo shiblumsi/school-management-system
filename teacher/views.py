@@ -33,11 +33,18 @@ def teacher_login(request):
 
 
 def teacher_deshboard(request):
-    return render(request,'teacher_deshboard.html')
+    user = request.user
+    teacher = Teacher.objects.get(user=user)
+    subject = Subject.objects.filter(subject_teacher=teacher)
+    context = {
+        'user':user,
+        'subject':subject
+    }
+    return render(request,'teacher_deshboard.html',context)
 
 
 def teacher_gives_mark(request):
-    subjects = Subject.objects.filter(subject_teacher__id=5)
+    subjects = Subject.objects.filter(subject_teacher__id=4)
     print(subjects)
     context = {
         'subjects':subjects,
@@ -52,6 +59,6 @@ def give_mark(request,subject_id):
         for student in students:
             mark = request.POST.get(f'student_{student.id}')
             Mark.objects.create(term=ExamType.objects.get(exam_type='Half_Yearly'),subject=subject,mark=mark,student=student)
-    return render(request,'give_mark.html',{'students':students})
+    return render(request,'give_mark.html',{'students':students,'subject':subject})
 
 
