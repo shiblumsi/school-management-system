@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import create_department,teacher_gives_mark,give_mark,teacher_login,teacher_deshboard,edit_mark, view_mark
+from .views import create_department, get_highest_mark,teacher_gives_mark,give_mark,teacher_login,teacher_deshboard,edit_mark, view_mark
 urlpatterns = [
     path('teacher_login',teacher_login,name='teacher-login'),
     path('teacher_deshboard',teacher_deshboard,name='teacher-deshboard'),
@@ -10,5 +10,5 @@ urlpatterns = [
     path('viewmark/<int:subject_id>',view_mark,name='view-mark'),
     path('editmark/<int:mark_id>',edit_mark,name='edit-mark'),
     
-    #path('get_height_mark',get_height_mark,name='get-height-mark'),
+    path('get_highest_mark/<int:subject_id>',get_highest_mark,name='get-highest-mark'),
 ]

@@ -6,10 +6,18 @@
     <title>Document</title>
 </head>
 <body>
+    <h2>See Here Highest Marks</h2>
     <form action="" method="post">
         {% csrf_token %}
+        <label for="">how many highest mark to see?</label><br>
         <input type="text" name="how_many">
         <input type="submit" value="submit">
     </form>
+    {% if highest_marks %}
+    <H2>{{ how_many }} highest marks </H2>
+    {% for highest_mark in highest_marks %}
+    {{highest_mark.student.name}}----{{ highest_mark.mark }}<br/>
+    {% endfor %}
+    {% endif %}
 </body>
 </html>

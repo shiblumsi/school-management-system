@@ -25,5 +25,9 @@
     {% for subject in subject %}
     <a href="{% url 'view-mark' subject.id %}"><h4>{{ subject.subject_name }}---<small>{{subject.which_class}}</small></h4></a>
     {% endfor %}
+    <h1>See highest Mark</h1>
+    {% for subject in subject %}
+    <a href="{% url 'get-highest-mark' subject.id %}"><h4>{{ subject.subject_name }}---<small>{{subject.which_class}}</small></h4></a>
+    {% endfor %}
 </body>
 </html>

@@ -81,9 +81,12 @@ def edit_mark(request,mark_id):
     return render(request,'edit_mark.html',{'form':form})
 
 
-# def get_height_mark(request):
-#     if request.method == "POST":
-#         how_many = request.POST.get('how_many')
-#         print(how_many)
-#         Mark.objects.filter
-#     return render(request,'get_height_mark.html')
+def get_highest_mark(request,subject_id):
+    subject_obj = Subject.objects.get(id=subject_id)
+    term = ExamType.objects.get(id=1)
+    highest_mark = None
+    how_many = None
+    if request.method == "POST":
+        how_many = request.POST.get('how_many')
+        highest_mark = Mark.objects.filter(subject=subject_obj,term=term).order_by('-mark')[:int(how_many)]
+    return render(request,'get_highest_mark.html',{'highest_marks':highest_mark,'how_many':how_many})
