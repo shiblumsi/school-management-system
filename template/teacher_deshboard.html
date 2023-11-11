@@ -13,13 +13,17 @@
     {% for subject in subject %}
     <a href="{% url 'students-attendance' subject.which_class.id %}"><h4>{{ subject.subject_name }}---<small>{{subject.which_class}}</small></h4></a>
     {% endfor %}
-    <h1>view Attendance</h1>
+    <h1>View/Update Attendance</h1>
     {% for subject in subject %}
     <a href="{% url 'view-attendance' subject.which_class.id %}"><h4>{{ subject.subject_name }}---<small>{{subject.which_class}}</small></h4></a>
     {% endfor %}
-    <h1>Grade</h1>
+    <h1>Give Mark</h1>
     {% for subject in subject %}
     <a href="{% url 'give-mark' subject.id %}"><h4>{{ subject.subject_name }}---<small>{{subject.which_class}}</small></h4></a>
+    {% endfor %}
+    <h1>View or Update Mark</h1>
+    {% for subject in subject %}
+    <a href="{% url 'view-mark' subject.id %}"><h4>{{ subject.subject_name }}---<small>{{subject.which_class}}</small></h4></a>
     {% endfor %}
 </body>
 </html>

@@ -70,7 +70,6 @@ def view_attendance(request, class_id):
 
 def edit_attendance(request, attendance_id):
     attendance = get_object_or_404(Attendance, id=attendance_id)
-
     if request.method == 'POST':
         form = EditAttendanceForm(request.POST, instance=attendance)
         if form.is_valid():
@@ -78,7 +77,6 @@ def edit_attendance(request, attendance_id):
             return redirect('teacher-deshboard')
     else:
         form = EditAttendanceForm(instance=attendance)
-
     return render(request, 'edit_attendance.html', {'form': form,'student_name':attendance.student.name})
 
 

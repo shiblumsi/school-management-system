@@ -1,9 +1,9 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import get_object_or_404, render,redirect
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from academic.models import ExamType, Subject
 from student.models import Mark, Student
-from .forms import DepartmentCreateForm
+from .forms import DepartmentCreateForm, EditMarkForm
 from .models import Teacher, Department
 
 # Create your views here.
@@ -56,9 +56,34 @@ def give_mark(request,subject_id):
     subject = Subject.objects.get(id=subject_id)
     students = Student.objects.filter(which_class=subject.which_class)
     if request.method == "POST":
+        type = request.POST.get('exam_type')
+        exam_type = ExamType.objects.get(exam_type=type)
         for student in students:
             mark = request.POST.get(f'student_{student.id}')
-            Mark.objects.create(term=ExamType.objects.get(exam_type='Half_Yearly'),subject=subject,mark=mark,student=student)
+            Mark.objects.create(term=exam_type,subject=subject,mark=mark,student=student)
     return render(request,'give_mark.html',{'students':students,'subject':subject})
 
+def view_mark(request,subject_id):
+    subject = Subject.objects.get(id=subject_id)
+    marks = Mark.objects.filter(subject=subject, student__which_class=subject.which_class)
+    return render(request,'view_mark.html',{'marks':marks})
 
+
+def edit_mark(request,mark_id):
+    mark_obj = get_object_or_404(Mark,id=mark_id)
+    if request.method == "POST":
+        form = EditMarkForm(request.POST, instance=mark_obj)
+        if form.is_valid():
+            form.save()
+            return redirect('teacher-deshboard')
+    else:
+        form = EditMarkForm(instance=mark_obj)
+    return render(request,'edit_mark.html',{'form':form})
+
+
+# def get_height_mark(request):
+#     if request.method == "POST":
+#         how_many = request.POST.get('how_many')
+#         print(how_many)
+#         Mark.objects.filter
+#     return render(request,'get_height_mark.html')

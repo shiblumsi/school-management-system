@@ -9,6 +9,10 @@
     <h2>Give the mark for {{subject.subject_name}}</h2>
     <form method="post">
         {% csrf_token %}
+        <select name="exam_type">
+            <option value="Half_Yearly" selected>Half_Yearly</option>
+            <option value="Final">Final</option>
+        </select><br>
         <table>
             <tbody>
                 <tr>
