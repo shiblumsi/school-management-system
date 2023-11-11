@@ -9,7 +9,7 @@ class StudentModeladmin(admin.ModelAdmin):
 
 @admin.register(Attendance)
 class AttendanceModeladmin(admin.ModelAdmin):
-    list_display = ['id','student','status']
+    list_display = ['id','student','status','date']
 
 
 @admin.register(Mark)

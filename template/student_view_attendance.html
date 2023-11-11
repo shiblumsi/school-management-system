@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>{{ month }}<p/>
+    {% for attendance in attendances %}
+    {{ attendance.date }}-----{{ attendance.status }}<br/>
+    {% endfor %}
+    <a href="{% url 'student-view-all-attendance' attendances.0.student.id %}">All Attendance</a>
+</body>
+</html>

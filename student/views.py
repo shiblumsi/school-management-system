@@ -1,9 +1,11 @@
+import calendar
 from datetime import datetime
 from django.shortcuts import redirect, render,get_object_or_404,HttpResponse 
 from .models import Mark, Student,Attendance,Class
-from .forms import EditAttendanceForm, GetStudentsForm, GetSubjectsForm
+from .forms import EditAttendanceForm, GetStudentsForm, GetSubjectsForm, StudentUpdateForm
 from academic.models import ClassRoutine2
-
+from django.contrib.auth import authenticate,login
+from django.contrib import messages
 
 # Create your views here.
 def student_detail(request):
@@ -40,6 +42,39 @@ def get_subjects_by_student(request):
         return render(request,'get_subjects_by_student.html',context)
     return render(request,'get_subjects_by_student.html',{'form':form})
 
+def student_deshboard(request):
+    user = request.user
+    student = Student.objects.get(user__id=user.id)
+    context = {
+        'student':student,
+    }
+    return render(request,'student_deshboard.html',context)
+
+
+def student_login(request):
+    if request.method == "POST":
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request,username=username,password=password)
+        if user is not None:
+            login(request,user)
+            messages.success(request, 'Login successful.')
+            return redirect('student-deshboard')
+        else:
+            messages.error(request, 'Login failed. Please check your username and password.')
+    return render(request,'student_login.html')
+
+
+def update_student_profile(request,student_id):
+    student_obj = Student.objects.get(user__id=student_id)
+    form = StudentUpdateForm(instance=student_obj)
+    if request.method == "POST":
+        form = StudentUpdateForm(request.POST, instance=student_obj)
+        if form.is_valid():
+            form.save()
+            return redirect('student-deshboard')
+    return render(request,'student_update_profile.html',{'form':form})
+    
 
 def students_attendance(request,class_id):
     class_obj = Class.objects.get(id=class_id)
@@ -80,6 +115,33 @@ def edit_attendance(request, attendance_id):
     return render(request, 'edit_attendance.html', {'form': form,'student_name':attendance.student.name})
 
 
+def student_view_attendance(request,student_id):
+    month_nubmer = datetime.now().month
+    month_name = calendar.month_name[month_nubmer]
+    attendance = Attendance.objects.filter(date__month=month_nubmer,student__id=student_id)
+    context = {
+        'attendances':attendance,
+        'month':month_name
+        }
+    return render(request,'student_view_attendance.html',context)
+
+
+def student_view_all_attendance(request,student_id):
+    months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+    ]
+    attendance_list = []
+    for i in range(1,13):
+        attendance = Attendance.objects.filter(date__month=i,student__id=student_id)
+        attendance_list.append(attendance)
+    context = {
+        'attendance_list':attendance_list,
+        'months':months
+        }
+    return render(request,'student_view_all_attendance.html',context)
+
+
 def student_view_routine(request,class_id):
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     routine = ClassRoutine2.objects.filter(which_class=class_id)
@@ -95,7 +157,7 @@ def student_routine_today(request,class_id):
     day_of_week = today.weekday()
     days = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     today_name = days[day_of_week]
-    routine = ClassRoutine2.objects.filter(which_class=class_id).filter(day=today_name)   #authentication will apply
+    routine = ClassRoutine2.objects.filter(which_class=class_id).filter(day=today_name)
     context = {
         'routine':routine,
         'today':today_name,

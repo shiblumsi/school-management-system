@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Student Deshboard</h1>
+    <h3>Name: {{ student.name }}</h3>
+    <a href="{% url 'update-student-profile' request.user.id %}"><p>Update Profile</p></a>
+
+    <a href="{% url 'student-view-attendance' student.id %}">Attendance</a>
+    <h3>Marks</h3>
+
+    <a href="{% url 'student-view-routine' student.which_class.id %}"><p>Class Routine</p></a>
+
+    <a href="{% url 'student-today-routine' student.which_class.id %}">Today Class Routine</a>
+
+    <h3>Accounts</h3>
+</body>
+</html>

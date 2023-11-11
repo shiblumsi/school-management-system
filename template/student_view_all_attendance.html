@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for month in months %}
+    {{ month }}<br/>
+    {% for attendances in attendance_list %}
+    {% for attendance in attendances %}
+    {% if attendance.date|date:"F" == month %}
+    {{ attendance.date }}----{{ attendance.status }}<br/>
+    {% endif %}
+    {% endfor %}
+    {% endfor %}<br/><br/>
+    {% endfor %}
+
+</body>
+</html>
