@@ -9,6 +9,9 @@
     <h1>Teacher deshboard</h1>
     <h3>User: {{ user }}</h3>
     <h3>Department:</h3>
+
+    <a href="{% url 'teacher-update-profile' request.user.id %}"><h3>Update Profile</h3></a>
+
     <h1>Attendance</h1>
     {% for subject in subject %}
     <a href="{% url 'students-attendance' subject.which_class.id %}"><h4>{{ subject.subject_name }}---<small>{{subject.which_class}}</small></h4></a>

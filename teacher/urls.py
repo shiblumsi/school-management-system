@@ -1,7 +1,8 @@
 from django.urls import path
-from .views import create_department, get_highest_mark,teacher_gives_mark,give_mark,teacher_login,teacher_deshboard,edit_mark, view_mark
+from .views import create_department, get_highest_mark,teacher_gives_mark,give_mark,teacher_login,teacher_deshboard,edit_mark, update_teacher_profile, view_mark
 urlpatterns = [
     path('teacher_login',teacher_login,name='teacher-login'),
+    path('teacherupdateprofile/<int:teacher_id>',update_teacher_profile,name='teacher-update-profile'),
     path('teacher_deshboard',teacher_deshboard,name='teacher-deshboard'),
 
     path('createdepertment',create_department,name='create-depertment'),

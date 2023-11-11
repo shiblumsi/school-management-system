@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from academic.models import ExamType, Subject
 from student.models import Mark, Student
-from .forms import DepartmentCreateForm, EditMarkForm
+from .forms import DepartmentCreateForm, EditMarkForm, TeacherUpdateForm
 from .models import Teacher, Department
 
 # Create your views here.
@@ -30,6 +30,17 @@ def teacher_login(request):
         else:
             messages.error(request, 'Login failed. Please check your username and password.')
     return render(request,'teacher_login.html')
+
+
+def update_teacher_profile(request,teacher_id):
+    teacher_obj = Teacher.objects.get(user__id=teacher_id)
+    form = TeacherUpdateForm(instance=teacher_obj)
+    if request.method == "POST":
+        form = TeacherUpdateForm(request.POST, instance=teacher_obj)
+        if form.is_valid():
+            form.save()
+            return redirect('teacher-deshboard')
+    return render(request,'teacher_update_profile.html',{'form':form})
 
 
 def teacher_deshboard(request):
