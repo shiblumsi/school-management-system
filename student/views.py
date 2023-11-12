@@ -168,9 +168,12 @@ def student_routine_today(request,class_id):
 
 def view_result(request,student_id):
     student = Student.objects.get(id=student_id)
-    results = Mark.objects.filter(student__id=student_id)
+    half_Yearly_exam_marks = Mark.objects.filter(student__id=student_id,term__id=1)
+    final_exam_marks = Mark.objects.filter(student__id=student_id,term__id=2)
+    half_Yearly_exam_marks=None
     context = {
-        'results':results,
-        'student':student
+        'half_Yearly_exam_marks':half_Yearly_exam_marks,
+        'student':student,
+        'final_exam_marks':final_exam_marks
     }
     return render(request,'get_result.html',context)

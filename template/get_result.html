@@ -1,23 +1,54 @@
 {% extends 'base.html' %}
 {% block content %}
-<h3>{{ student.name }}</h3>
+<h3>Name: {{ student.name }}</h3>
+<h3>Class: {{ student.which_class}} </h3><br>
+
+<p>Half_Yearly Exam Marks</p>
+{% if half_Yearly_exam_marks %}
 <table class="table">
     <thead>
       <tr>
-        <th scope="col">#</th>
+        <th scope="col">Numbers</th>
         <th scope="col">Subject</th>
         <th scope="col">Mark</th>
       </tr>
     </thead>
     <tbody>
-        {% for r in results %}
+      {% for mark in half_Yearly_exam_marks %}
       <tr>
-        <th scope="row">1</th>
-        <td>{{r.subject}}</td>
-        <td>{{r.mark}}</td>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{mark.subject}}</td>
+        <td>{{mark.mark}}</td>
       </tr>
       {% endfor %}
     </tbody>
   </table>
-  
+  {% else %}
+  <small style="color: red;">Final Term Exam Marks Not Published </small>
+  {% endif %}
+
+<p>Final Exam Marks</p>
+{% if final_exam_marks %}
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Numbers</th>
+        <th scope="col">Subject</th>
+        <th scope="col">Mark</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for mark in final_exam_marks %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{mark.subject}}</td>
+        <td>{{mark.mark}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% else %}
+  <small style="color: red;">Final Term Exam Marks Not Published </small>
+  {% endif %}
+
 {% endblock %}

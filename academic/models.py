@@ -73,6 +73,9 @@ class TutionFee(PreModel):
 class ExamType(PreModel):
     exam_type = models.CharField(max_length=255)
 
+    def __str__(self):
+        return self.exam_type
+
 
 class ExamTimeSlot(PreModel):
     time_slot = models.CharField(max_length=255)
