@@ -1,7 +1,7 @@
 from django import forms
 
 from teacher.models import Teacher
-from .models import  Class, ClassRoutineTimeSlot, Subject
+from .models import  Class, ClassRoutineTimeSlot, Subject, TutionFee
 
 
 
@@ -26,4 +26,10 @@ class CreateClassRoutineForm(forms.Form):
     time_slot = forms.ModelChoiceField(queryset=ClassRoutineTimeSlot.objects.all())
     subject = forms.ModelChoiceField(queryset=Subject.objects.all())
     day = forms.ChoiceField(choices=DAY)
+
+
+class TutionFeeForm(forms.ModelForm):
+    class Meta:
+        model = TutionFee
+        fields = ['amount']
   

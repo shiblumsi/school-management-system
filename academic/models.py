@@ -55,18 +55,31 @@ class TutionFeeByClass(PreModel):
 
 
 class TutionFee(PreModel):
-    student = models.ForeignKey('student.Student',on_delete=models.CASCADE)
-    amount = models.PositiveIntegerField()
-    
+    MONTH_CHOICES = [
+        ('JANUARY', 'January'),
+        ('FEBRUARY', 'February'),
+        ('MARCH', 'March'),
+        ('APRIL', 'April'),
+        ('MAY', 'May'),
+        ('JUNE', 'June'),
+        ('JULY', 'July'),
+        ('AUGUST', 'August'),
+        ('SEPTEMBER', 'September'),
+        ('OCTOBER', 'October'),
+        ('NOVEMBER', 'November'),
+        ('DECEMBER', 'December'),
+    ]
+    student = models.ForeignKey('student.Student', on_delete=models.CASCADE)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    month = models.CharField(max_length=255, choices=MONTH_CHOICES)
+    payment_date = models.DateField()
+    is_paid = models.BooleanField(default=False)
 
-    def status(self):
-        tfbc = TutionFeeByClass.objects.get(which_class=self.student.which_class)
-        if tfbc.tution_fee == self.amount:
-            return 'paid'
-        elif tfbc.tution_fee > self.amount:
-            return f'{tfbc.tution_fee - self.amount} due'
-        else:
-            return f'{self.amount - tfbc.tution_fee} advance'
+    @property
+    def due_amount(self):
+        return self.amount - 10000
+
+
 
 
 

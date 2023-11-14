@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Class, ClassRoutineTimeSlot, Subject, ClassRoutine2,ExamTimeSlot,ExamType,ExamRoutine,Result
+from .models import Class, ClassRoutineTimeSlot, Subject, ClassRoutine2,ExamTimeSlot,ExamType,ExamRoutine,Result,TutionFeeByClass,TutionFee
 
 @admin.register(Class)
 class ClassModeladmin(admin.ModelAdmin):
@@ -34,3 +34,15 @@ class ExamRoutineModeladmin(admin.ModelAdmin):
 @admin.register(Result)
 class ResultModeladmin(admin.ModelAdmin):
     list_display = ['student','subject','mark']
+
+
+
+@admin.register(TutionFeeByClass)
+class TutionFeeByClassModeladmin(admin.ModelAdmin):
+    list_display = ['which_class','tution_fee']
+
+
+
+@admin.register(TutionFee)
+class TutionFeeModeladmin(admin.ModelAdmin):
+    list_display = ['student','amount','month','payment_date','due_amount','is_paid']

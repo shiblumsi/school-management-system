@@ -21,9 +21,10 @@ from django.shortcuts import HttpResponse
 from academic.models import Class
 
 def fack_create(request):
+    X = 'stu1'
     for i in range(1,11):
-        user = User.objects.create_student(username=f'3stu{i}',password='1',email=f'3stu{i}@gmail.com')
-        Student.objects.create(user=user,name=f'3stu{i}',which_class=Class.objects.get(class_code='03'))
+        user = User.objects.create_student(username=f'{X}{i}',password='1',email=f'{X}{i}@gmail.com')
+        Student.objects.create(user=user,name=f'{X}{i}',which_class=Class.objects.get(class_code='01'))
     return HttpResponse('created')
 
 

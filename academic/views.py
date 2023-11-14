@@ -1,9 +1,10 @@
-from django.shortcuts import render
+from django.http import HttpResponse
+from django.shortcuts import get_object_or_404, render
 from django.core.exceptions import ValidationError
 from django.db.models import Q
 
-from .forms import CreateClassRoutineForm, WhichClassRoutineForm
-from .models import ClassRoutine2,ExamRoutine
+from .forms import CreateClassRoutineForm, TutionFeeForm, WhichClassRoutineForm
+from .models import ClassRoutine2,ExamRoutine, TutionFee
 
 
 def create_class_routine(request):
@@ -48,3 +49,24 @@ def view_class_routine(request,class_id):
 def view_exam_routine(request):
     routines = ExamRoutine.objects.all()        
     return render(request,'view_exam_routine.html',{'routines':routines})
+
+
+def tution_fee(request,student_id):
+    try:
+        tf = get_object_or_404(TutionFee, student__id=student_id, month='MAY')
+        if request.method == "POST":
+            add_amount = request.POST.get('add_amount')
+            tf.amount += int(add_amount)
+            tf.save()
+            if tf.amount >= 10000:
+                tf.is_paid = True
+                tf.save()
+        context = {
+            'tf':tf,
+        }
+        return render(request,'tution_fee_page.html',context)
+    except:
+        context = {
+            'tf':None
+        }
+        return render(request,'tution_fee_page.html',context)
