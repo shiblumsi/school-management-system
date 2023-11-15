@@ -70,3 +70,11 @@ def tution_fee(request,student_id):
             'tf':None
         }
         return render(request,'tution_fee_page.html',context)
+    
+
+def view_tution_fee(request,student_id):
+    tution_fees = TutionFee.objects.filter(student__id=student_id)
+    context = {
+        'tution_fees':tution_fees
+    }
+    return render(request,'view_tution_fee.html',context)

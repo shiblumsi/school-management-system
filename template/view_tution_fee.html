@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table {
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        th, td {
+          text-align: left;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #D6EEEE;
+        }
+        </style>
+</head>
+<body>
+
+        <body>
+        
+        <h2>{{ tution_fees.0.student.name }}</h2>
+        <p>Account Records</p>
+        
+        <table>
+          <tr>
+          <th>Month</th>
+          <th>Amount</th>
+          <th>Paid</th>
+          </tr>
+          {% for fee in tution_fees %}
+          <tr>
+          <td>{{ fee.month }}</td>
+          <td>{{ fee.amount }}</td>
+          <td>{{ fee.is_paid }}</td>
+          </tr>
+          {% endfor %}
+        </table>
+</body>
+</html>
