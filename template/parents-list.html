@@ -1,27 +1,24 @@
-﻿{% load static %}
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <title>Preschool - Bootstrap Admin Template</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
 
-<link rel="shortcut icon" type="image/x-icon" href="{% static 'img/favicon.png' %}">
+<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
 <link href="../../../../css?family=Roboto:300,400,500,700,900" rel="stylesheet">
 
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %} ">
+<link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
-<link rel="stylesheet" href="{% static 'plugins/fontawesome/css/all.min.css' %}">
-<link rel="stylesheet" href="{% static 'plugins/fontawesome/css/fontawesome.min.css' %}">
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
 
-<link rel="stylesheet" href="{% static 'css/fullcalendar.min.css' %}">
+<link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">
 
-<link rel="stylesheet" href="{% static 'css/dataTables.bootstrap4.min.css' %}">
+<link rel="stylesheet" href="assets/css/select2.min.css">
 
-<link rel="stylesheet" href="{% static 'plugins/morris/morris.css' %}">
-
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<link rel="stylesheet" href="assets/css/style.css">
 <!--[if lt IE 9]>
 		<script src="assets/js/html5shiv.min.js"></script>
 		<script src="assets/js/respond.min.js"></script>
@@ -51,7 +48,7 @@
 </div>
 </li>
 <li>
-<a href="index.html" class="mobile-logo d-md-block d-lg-none d-block"><img src="{% static 'img/logo1.png' %}" alt="" width="30" height="30"></a>
+<a href="index.html" class="mobile-logo d-md-block d-lg-none d-block"><img src="assets/img/logo1.png" alt="" width="30" height="30"></a>
 </li>
 </ul>
 
@@ -76,7 +73,7 @@
 <p class="noti-details"><span class="noti-title">John Doe</span> is now following you </p>
 <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
 </div>
-</div>
+ </div>
 </a>
 </li>
 <li class="notification-message">
@@ -133,7 +130,7 @@
 <li class="nav-item dropdown d-none d-sm-block">
 <a href="javascript:void(0);" id="open_msg_box" class="hasnotifications nav-link"><img src="assets/img/sidebar/icon-23.png" alt=""> </a>
 </li>
- <li class="nav-item dropdown has-arrow">
+<li class="nav-item dropdown has-arrow">
 <a href="#" class=" nav-link user-link" data-toggle="dropdown">
 <span class="user-img"><img class="rounded-circle" src="assets/img/user-06.jpg" width="30" alt="Admin">
 <span class="status online"></span></span>
@@ -171,7 +168,7 @@
 </div>
 <ul class="sidebar-ul">
 <li class="menu-title">Menu</li>
-<li class="active">
+<li>
 <a href="index.html"><img src="assets/img/sidebar/icon-1.png" alt="icon"><span>Dashboard</span></a>
 </li>
 <li class="submenu">
@@ -195,7 +192,7 @@
 <li class="submenu">
 <a href="#"><img src="assets/img/sidebar/icon-4.png" alt="icon"> <span> Parents</span> <span class="menu-arrow"></span></a>
 <ul class="list-unstyled" style="display: none;">
-<li><a href="all-parents.html"><span>All Parents</span></a></li>
+<li><a class="active" href="all-parents.html"><span>All Parents</span></a></li>
 <li><a href="add-parent.html"><span>Add Parent</span></a></li>
 <li><a href="edit-parent.html"><span>Edit Parent</span></a></li>
 <li><a href="about-parent.html"><span>About Parent</span></a></li>
@@ -251,7 +248,7 @@
 <li><a href="provident-fund.html"><span>Provident Fund</span></a></li>
 <li><a href="taxes.html"><span>Taxes</span></a></li>
 </ul>
-</li>
+ </li>
 <li class="submenu">
 <a href="#"><img src="assets/img/sidebar/icon-11.png" alt="icon"><span> Payroll </span> <span class="menu-arrow"></span></a>
 <ul class="list-unstyled" style="display: none;">
@@ -300,7 +297,7 @@
 <li>
 <a href="settings.html"><img src="assets/img/sidebar/icon-14.png" alt="icon"> <span>Settings</span></a>
 </li>
-<li class="menu-title">UI Elementssss</li>
+<li class="menu-title">UI Elements</li>
 <li class="submenu">
 <a href="#"><img src="assets/img/sidebar/icon-15.png" alt="icon"> <span> Components</span> <span class="menu-arrow"></span></a>
 <ul class="list-unstyled" style="display: none;">
@@ -414,10 +411,10 @@
 </li>
 <li>
 <a href="javascript:void(0);"><span>Level 1</span></a>
- </li>
-</ul>
 </li>
 </ul>
+</li>
+ </ul>
 </div>
 </div>
 </div>
@@ -425,628 +422,86 @@
 
 <div class="page-wrapper">
 <div class="content container-fluid">
-
 <div class="page-header">
 <div class="row">
-<div class="col-md-6">
-<h3 class="page-title mb-0">Dashboard</h3>
+<div class="col-lg-6 col-md-6 col-sm-6 col-12">
+<h5 class="text-uppercase mb-0 mt-0 page-title">Parents list</h5>
 </div>
-<div class="col-md-6">
-<ul class="breadcrumb mb-0 p-0 float-right">
+<div class="col-lg-6 col-md-6 col-sm-6 col-12">
+<ul class="breadcrumb float-right p-0 mb-0">
 <li class="breadcrumb-item"><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-<li class="breadcrumb-item"><span>Dashboard</span></li>
+<li class="breadcrumb-item"><a href="index.html">Parents</a></li>
+<li class="breadcrumb-item"><span> Parents list</span></li>
 </ul>
 </div>
 </div>
 </div>
-
 <div class="row">
-<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-<div class="dash-widget dash-widget5">
-<span class="float-left"><img src="assets/img/dash/dash-1.png" alt="" width="80"></span>
-<div class="dash-widget-info text-right">
-<span>Students</span>
-<h3>60,000</h3>
+<div class="col-sm-4 col-12">
+</div>
+<div class="col-sm-8 col-12 text-right add-btn-col">
+<a href="add-parent.html" class="btn btn-primary float-right btn-rounded"><i class="fas fa-plus"></i> Add Parent</a>
+<div class="view-icons">
+<a href="all-parents.html" class="grid-view btn btn-link"><i class="fas fa-th"></i></a>
+<a href="parents-list.html" class="list-view btn btn-link active"><i class="fas fa-bars"></i></a>
 </div>
 </div>
 </div>
-<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-<div class="dash-widget dash-widget5">
-<div class="dash-widget-info text-left d-inline-block">
-<span>Teachers</span>
-<h3>12,000</h3>
-</div>
-<span class="float-right"><img src="assets/img/dash/dash-2.png" width="80" alt=""></span>
-</div>
-</div>
-<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-<div class="dash-widget dash-widget5">
-<span class="float-left"><img src="assets/img/dash/dash-3.png" alt="" width="80"></span>
-<div class="dash-widget-info text-right">
-<span>Parents</span>
-<h3>20,000</h3>
+<div class="content-page">
+<div class="row filter-row">
+<div class="col-sm-6 col-md-3">
+<div class="form-group form-focus">
+<input type="text" class="form-control floating">
+<label class="focus-label">Parents ID</label>
 </div>
 </div>
+<div class="col-sm-6 col-md-3">
+<div class="form-group form-focus">
+<input type="text" class="form-control floating">
+<label class="focus-label">Parents Name</label>
 </div>
-<div class="col-md-6 col-sm-6 col-lg-6 col-xl-3">
-<div class="dash-widget dash-widget5">
-<div class="dash-widget-info d-inline-block text-left">
-<span>Total Earnings</span>
-<h3>$20,000</h3>
 </div>
-<span class="float-right"><img src="assets/img/dash/dash-4.png" alt="" width="80"></span>
+<div class="col-sm-6 col-md-3">
+<div class="form-group form-focus">
+<input type="text" class="form-control floating">
+<label class="focus-label">Mobile</label>
 </div>
+</div>
+<div class="col-sm-6 col-md-3">
+<a href="#" class="btn btn-search rounded btn-block mb-3"> search </a>
 </div>
 </div>
 <div class="row">
-<div class="col-lg-6 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-auto">
-<div class="page-title">
-Students Survay
-</div>
-</div>
-<div class="col text-right">
-<div class=" mt-sm-0 mt-2">
-<button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
- <div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">Action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Another action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div id="chart1"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-6 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-auto">
-<div class="page-title">
-Student Performance
-</div>
-</div>
-<div class="col text-right">
-<div class=" mt-sm-0 mt-2">
-<button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
-<div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">Action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Another action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div id="chart2"></div>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-lg-6 col-md-12 col-12 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-auto">
-<div class="page-title">
-Events
-</div>
-</div>
-<div class="col text-right">
-<div class=" mt-sm-0 mt-2">
-<button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
-<div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">Action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Another action</a>
-<div role="separator" class="dropdown-divider"></div>
- <a class="dropdown-item" href="#">Something else here</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div id="calendar" class=" overflow-hidden"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-6 col-md-12 col-12 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-auto">
-<div class="page-title">
-Total Member
-</div>
-</div>
-<div class="col text-right">
-<div class=" mt-sm-0 mt-2">
-<button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
-<div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">Action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Another action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card-body d-flex align-items-center justify-content-center overflow-hidden">
-<div id="chart3"> </div>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-lg-6 col-md-12 col-12 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-auto">
-<div class="page-title">
-Income Monthwise
-</div>
-</div>
-<div class="col text-right">
-<div class=" mt-sm-0 mt-2">
-<button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
-<div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">Action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Another action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div id="chart4"></div>
-</div>
-</div>
-</div>
-<div class="col-lg-6 d-flex">
-<div class="card flex-fill">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-auto">
-<div class="page-title">
-Exam List
-</div>
-</div>
-<div class="col text-right">
-<div class=" mt-sm-0 mt-2">
-<button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
-<div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">Action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Another action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div class="row">
-<div class="col-md-12">
+<div class="col-md-12 mb-3">
 <div class="table-responsive">
-<table class="table custom-table">
-<thead class="thead-light">
-<tr>
-<th>Exam Name </th>
-<th>Subject</th>
-<th>Class</th>
-<th>Section</th>
-<th>Time</th>
-<th>Date</th>
-<th class="text-right">Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<a href="exam-detail.html" class="avatar bg-green">C</a>
-</td>
-<td>English</td>
-<td>5</td>
-<td>B</td>
-<td>10.00am</td>
-<td>20/1/2019</td>
-<td class="text-right">
-<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<a href="exam-detail.html" class="avatar bg-purple">C</a>
-</td>
-<td>English</td>
-<td>4</td>
-<td>A</td>
-<td>10.00am</td>
-<td>2/1/2019</td>
-<td class="text-right">
-<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<a href="exam-detail.html" class="avatar bg-green">C</a>
-</td>
-<td>Maths</td>
-<td>6</td>
-<td>B</td>
-<td>10.00am</td>
-<td>2/1/2019</td>
-<td class="text-right">
-<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<a href="exam-detail.html" class="avatar bg-dark">C</a>
-</td>
-<td>Science</td>
-<td>3</td>
-<td>B</td>
-<td>10.00am</td>
-<td>20/1/2019</td>
-<td class="text-right">
-<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<a href="exam-detail.html" class="avatar bg-green">C</a>
-</td>
-<td>Maths</td>
-<td>6</td>
-<td>B</td>
-<td>10.00am</td>
-<td>20/1/2019</td>
-<td class="text-right">
-<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<a href="exam-detail.html" class="avatar bg-dark">C</a>
-</td>
-<td>English</td>
-<td>7</td>
-<td>B</td>
-<td>10.00am</td>
-<td>20/1/2019</td>
-<td class="text-right">
-<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<a href="exam-detail.html" class="avatar bg-purple">C</a>
-</td>
-<td>Science</td>
-<td>5</td>
-<td>B</td>
-<td>10.00am</td>
-<td>20/1/2019</td>
-<td class="text-right">
-<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-lg-12">
-<div class="card">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-sm-6">
- <div class="page-title">
-All Students
-</div>
-</div>
-<div class="col-sm-6 text-sm-right">
-<div class=" mt-sm-0 mt-2">
-<button class="btn btn-outline-primary mr-2"><img src="assets/img/excel.png" alt=""><span class="ml-2">Excel</span></button>
-<button class="btn btn-outline-danger mr-2"><img src="assets/img/pdf.png" alt="" height="18"><span class="ml-2">PDF</span></button>
-<button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
-<div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">Action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Another action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div class="table-responsive">
-<table class="table custom-table">
+<table class="table custom-table datatable">
 <thead class="thead-light">
 <tr>
 <th>Name </th>
-<th>Student ID</th>
-<th>Class</th>
-<th>Section</th>
-<th>Mobile</th>
-<th>Date of Birth</th>
-<th class="text-right">Action</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-1.jpg" alt=""></a><a href="profile.html">Parker <span></span></a></h2>
-</td>
-<td>ST-0d001</td>
-<td>1</td>
-<td>A</td>
-<td>973-584-58700</td>
-<td>20/1/2021</td>
-<td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-2.jpg" alt=""></a><a href="profile.html">Smith <span></span></a></h2>
-</td>
-<td>ST-0d002</td>
-<td>2</td>
-<td>B</td>
-<td>973-584-58700</td>
-<td>20/1/2021</td>
-<td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-3.jpg" alt=""></a><a href="profile.html">Hensley<span></span></a></h2>
-</td>
-<td>ST-0d003</td>
-<td>1</td>
-<td>A</td>
-<td>973-584-58700</td>
-<td>20/1/2021</td>
-<td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-4.jpg" alt=""></a><a href="profile.html">Friesen<span></span></a></h2>
-</td>
-<td>ST-0d004</td>
-<td>1</td>
-<td>A</td>
-<td>973-584-58700</td>
-<td>20/1/2021</td>
-<td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
- </button>
-</td>
-</tr>
-<tr>
-<td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-5.jpg" alt=""></a><a href="profile.html">Jackson<span></span></a></h2>
-</td>
-<td>ST-0d005</td>
-<td>1</td>
-<td>A</td>
-<td>973-584-58700</td>
-<td>20/1/2021</td>
-<td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-6.jpg" alt=""></a><a href="profile.html">Mason<span></span></a></h2>
-</td>
-<td>ST-0d006</td>
-<td>1</td>
-<td>A</td>
-<td>973-584-58700</td>
-<td>20/1/2021</td>
-<td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-7.jpg" alt=""></a><a href="profile.html">Garrett <span></span></a></h2>
-</td>
-<td>ST-0d007</td>
-<td>1</td>
-<td>A</td>
-<td>973-584-58700</td>
-<td>20/1/2021</td>
-<td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
-<i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row">
-<div class="col-12">
-<div class="card">
-<div class="card-header">
-<div class="row align-items-center">
-<div class="col-sm-6">
-<div class="page-title">
-New Students
-</div>
-</div>
-<div class="col-sm-6 text-sm-right">
-<div class=" mt-sm-0 mt-2">
-<button class="btn btn-outline-primary mr-2"><img src="assets/img/excel.png" alt=""><span class="ml-2">Excel</span></button>
-<button class="btn btn-outline-danger mr-2"><img src="assets/img/pdf.png" alt="" height="18"><span class="ml-2">PDF</span></button>
-<button class="btn btn-light" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-ellipsis-h"></i></button>
-<div class="dropdown-menu dropdown-menu-right">
-<a class="dropdown-item" href="#">Action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Another action</a>
-<div role="separator" class="dropdown-divider"></div>
-<a class="dropdown-item" href="#">Something else here</a>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="card-body">
-<div class="row">
-<div class="col-lg-12 col-md-12 col-sm-12 col-12">
-<div class="table-responsive">
-<table class="table custom-table">
-<thead class="thead-light">
-<tr>
-<th>Name </th>
-<th>Student ID</th>
-<th>Parent Name</th>
-<th>Mobile</th>
+<th>ID</th>
+<th>Gender</th>
+<th>Student Name</th>
+<th>Occupation</th>
 <th>Address</th>
-<th>Date Of Admition</th>
-<th>Fees Receipt</th>
+<th>Email</th>
+<th>Mobile</th>
 <th class="text-right">Action</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-1.jpg" alt=""></a><a href="profile.html">Parker <span></span></a></h2>
+<h2><a href="profile.html" class="avatar text-white">J</a><a href="profile.html">Jeffrey M. Wong <span></span></a></h2>
 </td>
-<td>ST-0d001</td>
-<td>Mr. Johnson</td>
-<td>973-584-58700</td>
-<td>9946 Baker Rd. Marysville, </td>
-<td>20/1/2021</td>
-<td><img src="assets/img/pdf.png" alt=""></td>
+<td>PT-0d001</td>
+<td>Male</td>
+<td>Parker</td>
+<td>Mathematical technician</td>
+<td>913 Deer Ridge Drive,Succasunna, NJ 07876</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="8fe5eae9e9fdeaf6e2f8e0e1e8cfeaf7eee2ffe3eaa1ece0e2">[email&#160;protected]</a></td>
+<td>973-584-5870</td>
 <td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
- <i class="far fa-edit"></i>
-</a>
-<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
-<i class="far fa-trash-alt"></i>
-</button>
-</td>
-</tr>
-<tr>
-<td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-2.jpg" alt=""></a><a href="profile.html">Smith <span></span></a></h2>
-</td>
-<td>ST-0d002</td>
-<td>Mr. Luke Idaman</td>
-<td>973-584-58700</td>
-<td>193 S. Harrison Drive </td>
-<td>20/1/2021</td>
-<td><img src="assets/img/pdf.png" alt=""></td>
-<td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
 <i class="far fa-edit"></i>
 </a>
 <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
@@ -1056,16 +511,17 @@ New Students
 </tr>
 <tr>
 <td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-3.jpg" alt=""></a><a href="profile.html">Hensley<span></span></a></h2>
+<h2><a href="profile.html" class="avatar text-white">M</a><a href="profile.html">Michael S. Porch<span></span></a></h2>
 </td>
-<td>ST-0d003</td>
-<td>Mr. Kevin H</td>
-<td>973-584-58700</td>
-<td>8949 Golf St. Palm Coast </td>
-<td>20/1/2021</td>
-<td><img src="assets/img/pdf.png" alt=""></td>
+<td>PT-0d002</td>
+<td>Male</td>
+<td> Smith</td>
+<td>Commodities trader</td>
+<td>3148 Melody Lane,Mckenney, VA 23872</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="4b262228232a2e27383b243928230b2e332a263b272e65282426">[email&#160;protected]</a></td>
+<td>804-478-7698</td>
 <td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
 <i class="far fa-edit"></i>
 </a>
 <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
@@ -1075,16 +531,17 @@ New Students
 </tr>
 <tr>
 <td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-4.jpg" alt=""></a><a href="profile.html">Friesen<span></span></a></h2>
+<h2> <a href="profile.html" class="avatar text-white">E</a><a href="profile.html">Elaine A. Keenum<span></span></a></h2>
 </td>
-<td>ST-0d004</td>
-<td>Mr. Randy O</td>
-<td>973-584-58700</td>
-<td>23 Ohio Court Alexandria </td>
-<td>20/1/2021</td>
-<td><img src="assets/img/pdf.png" alt=""></td>
+<td>PT-0d003</td>
+<td>Male</td>
+<td>Hensley</td>
+<td>Plasma cutter</td>
+<td>665 Isaacs Creek Road,Golden, IL 62339</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cbaea7aaa2a5aeaaa0aeaea5bea68baeb3aaa6bba7aee5a8a4a6">[email&#160;protected]</a></td>
+<td>217-509-0538</td>
 <td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
 <i class="far fa-edit"></i>
 </a>
 <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
@@ -1094,16 +551,37 @@ New Students
 </tr>
 <tr>
 <td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-5.jpg" alt=""></a><a href="profile.html">Jackson<span></span></a></h2>
+<h2><a href="profile.html" class="avatar text-white">M</a><a href="profile.html">Marion S. Shannon<span></span></a></h2>
 </td>
-<td>ST-0d005</td>
-<td>Mr. Steven</td>
-<td>973-584-58700</td>
-<td>338 North Cleveland Rd </td>
-<td>20/1/2021</td>
-<td><img src="assets/img/pdf.png" alt=""></td>
+<td>PT-0d004</td>
+<td>Male</td>
+<td>Parker</td>
+<td>Friesen</td>
+<td>3821 Ash street,Lewisville, TX 75067</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="81ece0f3e8eeeff2f2e9e0efefeeefc1e4f9e0ecf1ede4afe2eeec">[email&#160;protected]</a></td>
+<td>972-874-9653</td>
 <td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+ </tr>
+<tr>
+<td>
+<h2> <a href="profile.html" class="avatar text-white">E</a><a href="profile.html">Erin A. Collins<span></span></a></h2>
+</td>
+<td>PT-0d005</td>
+<td>Male</td>
+<td>Jackson</td>
+<td>Management information systems director</td>
+<td>3076 Gandy street,Syracuse, NY 13224</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86e3f4efe8e7e5e9eaeaefe8f5c6e3fee7ebf6eae3a8e5e9eb">[email&#160;protected]</a></td>
+<td>315-224-9840</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
 <i class="far fa-edit"></i>
 </a>
 <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
@@ -1113,16 +591,17 @@ New Students
 </tr>
 <tr>
 <td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-6.jpg" alt=""></a><a href="profile.html">Mason<span></span></a></h2>
+<h2><a href="profile.html" class="avatar text-white">W</a><a href="profile.html">William D. Jones<span></span></a></h2>
 </td>
-<td>ST-0d006</td>
-<td>Mr. Ervin</td>
+<td>PT-0d006</td>
+<td>Male</td>
+<td>Mason</td>
+<td>Aircraft structure assembler</td>
+<td>4633 Wilson street,San Diego, CA 92111</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7a0d131616131b171e1015141f093a1f021b170a161f54191517">[email&#160;protected]</a></td>
 <td>973-584-58700</td>
-<td>7909 W. Sunnyslope St. </td>
-<td>20/1/2021</td>
-<td><img src="assets/img/pdf.png" alt=""></td>
 <td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
 <i class="far fa-edit"></i>
 </a>
 <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
@@ -1132,17 +611,197 @@ New Students
 </tr>
 <tr>
 <td>
-<h2><a href="profile.html" class="avatar text-white"><img src="assets/img/profile/img-7.jpg" alt=""></a>
-<a href="profile.html">Garrett <span></span></a></h2>
+<h2><a href="profile.html" class="avatar text-white">J</a><a href="profile.html">Jennifer M. Walker<span></span></a></h2>
 </td>
-<td>ST-0d007</td>
-<td>Mr. Marquz</td>
-<td>973-584-58700</td>
-<td>7361 Dunbar Street </td>
-<td>20/1/2021</td>
-<td><img src="assets/img/pdf.png" alt=""></td>
+<td>PT-0d006</td>
+<td>Male</td>
+<td>Garrett</td>
+<td>Bill and account collector</td>
+<td>2281 Whispering Pines Circle,Dallas, TX 75207</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="99d3fcf7f7f0fffcebd4cef8f5f2fcebd9f3f6ecebebf8e9f0fdfcb7faf6f4">[email&#160;protected]</a></td>
+<td>972-372-5354</td>
 <td class="text-right">
-<a href="edit-student.html" class="btn btn-primary btn-sm mb-1">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+<td>
+<h2><a href="profile.html" class="avatar text-white">C</a><a href="profile.html">Christopher S. Ramirez<span></span></a></h2>
+</td>
+<td>PT-0d007</td>
+ <td>Male</td>
+<td>Perry</td>
+<td>Independent agent</td>
+<td>1875 Charles street,Plymouth, MI 48170</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="5f1c372d362c2b302f373a2d2c2d3e32362d3a251f">[email&#160;protected]</a>@example.com</td>
+<td>734-459-5639</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+<td>
+<h2><a href="profile.html" class="avatar text-white">D</a><a href="profile.html">Danielle D. Hickson<span></span></a></h2>
+</td>
+<td>PT-0d008</td>
+<td>Male</td>
+<td>Williams</td>
+<td>Plant manager</td>
+<td>2230 Paul Wayne Haggerty Road,Marrero, LA 70072</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e3898c8b8d878c86a3869b828e938f86cd808c8e">[email&#160;protected]</a></td>
+<td>504-371-7703</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+<td>
+<h2><a href="profile.html" class="avatar text-white">J</a><a href="profile.html">Jacqueline C. Green<span></span></a></h2>
+</td>
+<td>PT-0d010</td>
+<td>Male</td>
+<td>Kulick</td>
+<td>Civil engineer</td>
+<td>4796 Froe street,Wheeling, WV 26003</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="cba1aaa8babeaea7a2a5aea8acb9aeaea58baeb3aaa6bba7aee5a8a4a6">[email&#160;protected]</a></td>
+<td>304-370-7153</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+<td>
+<h2> <a href="profile.html" class="avatar text-white">J</a><a href="profile.html">Parker <span></span></a></h2>
+</td>
+<td>PT-0d001</td>
+<td>Male</td>
+<td>Parker</td>
+<td>Mathematical technician</td>
+<td>1645 Gateway Avenue,California</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="0b616463656f646e4b6e736a667b676e25686466">[email&#160;protected]</a></td>
+<td>973-584-58700</td>
+<td class="text-right">
+ <a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+<td>
+<h2><a href="profile.html" class="avatar text-white">J</a><a href="profile.html">Jeffrey M. Wong <span></span></a></h2>
+</td>
+<td>PT-0d001</td>
+<td>Male</td>
+<td>Parker</td>
+<td>Mathematical technician</td>
+<td>913 Deer Ridge Drive,Succasunna, NJ 07876</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e8828d8e8e9a8d91859f87868fa88d90898598848dc68b8785">[email&#160;protected]</a></td>
+<td>973-584-5870</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+<td>
+<h2><a href="profile.html" class="avatar text-white">M</a><a href="profile.html">Michael S. Porch<span></span></a></h2>
+</td>
+<td>PT-0d002</td>
+<td>Male</td>
+<td> Smith</td>
+<td>Commodities trader</td>
+<td>3148 Melody Lane,Mckenney, VA 23872</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="24494d474c45414857544b56474c64415c45495448410a474b49">[email&#160;protected]</a></td>
+<td>804-478-7698</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+<td>
+<h2><a href="profile.html" class="avatar text-white">E</a><a href="profile.html">Elaine A. Keenum<span></span></a></h2>
+</td>
+<td>PT-0d003</td>
+<td>Male</td>
+<td>Hensley</td>
+<td>Plasma cutter</td>
+<td>665 Isaacs Creek Road,Golden, IL 62339</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="543138353d3a31353f31313a213914312c35392438317a373b39">[email&#160;protected]</a></td>
+<td>217-509-0538</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+ <td>
+<h2><a href="profile.html" class="avatar">M</a><a href="profile.html">Marion S. Shannon<span></span></a></h2>
+</td>
+<td>PT-0d004</td>
+<td>Male</td>
+<td>Parker</td>
+<td>Friesen</td>
+<td>3821 Ash street,Lewisville, TX 75067</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="3855594a5157564b4b505956565756785d40595548545d165b5755">[email&#160;protected]</a></td>
+<td>972-874-9653</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
+<i class="far fa-edit"></i>
+</a>
+<button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
+<i class="far fa-trash-alt"></i>
+</button>
+</td>
+</tr>
+<tr>
+<td>
+<h2><a href="profile.html" class="avatar text-white">E</a><a href="profile.html">Erin A. Collins<span></span></a></h2>
+</td>
+<td>PT-0d005</td>
+<td>Male</td>
+<td>Jackson</td>
+<td>Management information systems director</td>
+<td>3076 Gandy street,Syracuse, NY 13224</td>
+<td><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="781d0a1116191b17141411160b381d00191508141d561b1715">[email&#160;protected]</a></td>
+<td>315-224-9840</td>
+<td class="text-right">
+<a href="edit-exam.html" class="btn btn-primary btn-sm mb-1">
 <i class="far fa-edit"></i>
 </a>
 <button type="submit" data-toggle="modal" data-target="#delete_employee" class="btn btn-danger btn-sm mb-1">
@@ -1152,9 +811,6 @@ New Students
 </tr>
 </tbody>
 </table>
-</div>
-</div>
-</div>
 </div>
 </div>
 </div>
@@ -1184,7 +840,7 @@ New Students
 <li>
 <a href="chat.html">
 <div class="list-item new-message">
-<div class="list-left">
+ <div class="list-left">
 <span class="avatar">J</span>
 </div>
 <div class="list-body">
@@ -1249,7 +905,7 @@ New Students
 </div>
 <div class="list-body">
 <span class="message-author"> Domenic Houston </span>
-<span class="message-time">12:28 AM</span>
+ <span class="message-time">12:28 AM</span>
 <div class="clearfix"></div>
 <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
 </div>
@@ -1312,7 +968,7 @@ New Students
 <span class="message-time">12:28 AM</span>
 <div class="clearfix"></div>
 <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-</div>
+ </div>
 </div>
 </a>
 </li>
@@ -1371,27 +1027,38 @@ New Students
 </div>
 </div>
 
+<div id="delete_employee" class="modal" role="dialog">
+<div class="modal-dialog modal-dialog-centered">
+<div class="modal-content modal-md">
+<div class="modal-header">
+<h4 class="modal-title">Delete Student</h4>
+</div>
+<form>
+<div class="modal-body">
+<p>Are you sure want to delete this?</p>
+<div class="m-t-20"> <a href="#" class="btn btn-white" data-dismiss="modal">Close</a>
+<button type="submit" class="btn btn-danger">Delete</button>
+</div>
+</div>
+</form>
+</div>
+</div>
+</div>
 </div>
 
+<script data-cfasync="false" src="../../../../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="assets/js/jquery-3.6.0.min.js"></script>
 
-<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="assets/js/bootstrap.bundle.min.js"></script>
 
-<script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+<script src="assets/js/jquery.slimscroll.js"></script>
+<script src="assets/js/jquery.dataTables.min.js"></script>
+<script src="assets/js/dataTables.bootstrap4.min.js"></script>
 
-<script src="{% static 'js/jquery.slimscroll.js' %}"></script>
- 
-<script src="{% static 'js/select2.min.js' %}"></script>
-<script src="{% static 'js/moment.min.js' %}"></script>
+<script src="assets/js/select2.min.js"></script>
+<script src="assets/js/moment.min.js"></script>
 
-<script src="{% static 'js/fullcalendar.min.js' %}"></script>
-<script src="{% static 'js/jquery.fullcalendar.js' %}"></script>
+<script src="assets/plugins/datetimepicker/js/tempusdominus-bootstrap-4.min.js"></script>
 
-<script src="{% static 'plugins/morris/morris.min.js' %}"></script>
-<script src="{% static 'plugins/raphael/raphael-min.js' %}"></script>
-<script src="{% static 'js/apexcharts.js' %}"></script>
-<script src="{% static 'js/chart-data.js' %}"></script>
-
-<script src="{% static 'js/app.js' %}"></script>
+<script src="assets/js/app.js"></script>
 </body>
-
 </html>

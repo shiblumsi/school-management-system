@@ -36,7 +36,6 @@ def student_create(request):
             which_class = Class.objects.get(class_code=class_code)
             user = User.objects.create_student(username=name,password='1',email=email)
             Student.objects.create(user=user,name=name,which_class=which_class)
-            
     return render(request,'student_create.html',{'form':form})
 
 

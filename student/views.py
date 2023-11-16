@@ -8,8 +8,61 @@ from django.contrib.auth import authenticate,login
 from django.contrib import messages
 
 # Create your views here.
-def student_detail(request):
-    pass
+def aa(request):
+    return render(request,'aa.html')
+
+def add_student(request):
+    return render(request,'add-student.html')
+
+def all_students(request):
+    all_students = Student.objects.all()
+    return render(request,'all-students.html',{'all_students':all_students})
+
+def students_list(request):
+    all_students = Student.objects.all()
+    return render(request,'students-list.html',{'all_students':all_students})
+
+
+def edit_student(request):
+    return render(request,'edit-student.html')
+
+
+def about_student(request):
+    return render(request,'about-student.html')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 def get_students_by_class(request):
     form = GetStudentsForm()
@@ -42,6 +95,7 @@ def get_subjects_by_student(request):
         return render(request,'get_subjects_by_student.html',context)
     return render(request,'get_subjects_by_student.html',{'form':form})
 
+
 def student_deshboard(request):
     user = request.user
     student = Student.objects.get(user__id=user.id)
@@ -65,6 +119,11 @@ def student_login(request):
     return render(request,'student_login.html')
 
 
+def student_profile(request,student_id):
+    student = Student.objects.get(id=student_id)
+    return render(request,'student-profile.html',{'student':student})
+
+
 def update_student_profile(request,student_id):
     student_obj = Student.objects.get(user__id=student_id)
     form = StudentUpdateForm(instance=student_obj)
@@ -84,7 +143,7 @@ def students_attendance(request,class_id):
             status = request.POST.get(f'student_{student.id}')
             date = request.POST.get('date')
             Attendance.objects.create(student=student,status=status,date=date)
-    return render(request,'attendance.html',{'students':students,'class':class_obj})
+    return render(request,'attendance_old.html',{'students':students,'class':class_obj})
 
 
 def view_attendance(request, class_id):
